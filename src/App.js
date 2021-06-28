@@ -1,10 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import BeerList from './pages/BeerList';
+import Header from './components/Header/Header';
+import { BeerProvider } from './store/beerContext';
 
 function App() {
   return (
-    <BeerList/>
+    <BeerProvider>
+      <Header/>
+      <BeerList/>
+    </BeerProvider>
   );
 }
 

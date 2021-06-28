@@ -19,16 +19,20 @@ export default function BeerCard({beer, ...props}){
 
     
   return(
-   <S.BeerCard>
-     <S.BeerImage src={beer.image_url} alt="Avatar" className="avatar"/>
-     <S.Descriptions>
-     <S.BeerName>{beer.name}</S.BeerName>
-     <S.Description>{beer.description}</S.Description>
-     <S.Pairing><b>Food pairing: </b>{beer.food_pairing}</S.Pairing>
-     <S.Highlight><b>abv: </b>{beer.abv}</S.Highlight>
-     <S.Highlight><b>ibu: </b>{beer.ibu}</S.Highlight>
-     </S.Descriptions>
-     <S.Like/>
-   </S.BeerCard>
+    <>
+      <S.BeerCard>
+        <S.BeerImage src={beer.image_url} alt="Avatar" className="avatar"/>
+        <S.Descriptions>
+        <S.BeerName>{beer.name}</S.BeerName>
+        <S.Pairing>{beer.tagline}</S.Pairing>
+        <S.Description>{beer.description}</S.Description>
+        <S.Pairing><b>Harmonização de comida: </b>{beer.food_pairing}</S.Pairing>
+        <S.Highlight><b>ABV: </b>{beer.abv}</S.Highlight>
+        <S.Highlight><b>IBU: </b>{beer.ibu}</S.Highlight>
+        <S.Highlight><b>Since </b>{beer.first_brewed}</S.Highlight>
+        </S.Descriptions>
+        <S.Like/>
+      </S.BeerCard>
+    </>
   )
 }
