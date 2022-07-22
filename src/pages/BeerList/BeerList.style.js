@@ -5,13 +5,29 @@ export const BeerCards = styled.div`
   
   display: flex;
   flex-flow: wrap;
-  padding: 50px 30px;
   gap: 16px;
-  justify-content: space-between;
-  background-image: url(${bgBeer});
-  background-size: cover;
+  justify-content: center;
   flex-shrink: 2;
-
-  
+  background-color: white;
+  width: 80%;
+  margin: 0 auto;
 
 ` 
+
+export const BeerList = styled.div`
+  background-image: url(${bgBeer});
+  background-size: cover;
+  padding: 50px 30px;
+
+`
+export const SeeMoreButton = styled.div`
+  border-radius: 16px;
+  background-color: white;
+  border: 1px solid lightblue;
+  width: 100px;
+  height: 30px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`

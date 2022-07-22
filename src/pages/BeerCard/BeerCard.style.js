@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import iconLike from "../../images/like.svg";
+import styled, {css} from 'styled-components';
 
 export const BeerCard = styled.div`
   position: relative;
   /* width: 40%; */
+  max-width: 350px;
   height: 200px;
   display: grid;
   grid-template-areas: 'beerImage descriptions';
@@ -66,8 +66,8 @@ export const Pairing = styled.p`
 export const Highlight = styled.div`
   font-size: 10px;
 `
-export const Like = styled.div`
-  background-image: url(${iconLike});
+export const Like = styled.img`
+  ${(icon) =>  `background-image: url(${icon})`}
   width: 25px;
   height: 25px;
   background-size: contain;
@@ -75,4 +75,5 @@ export const Like = styled.div`
   position: absolute;
   bottom: 20px;
   right: 20px;
+  cursor: pointer;
 `
