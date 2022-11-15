@@ -9,16 +9,18 @@ export const BeerCards = styled.div`
   justify-content: center;
   flex-shrink: 2;
   background-color: white;
-  width: 80%;
+  /* width: 80%; */
   margin: 0 auto;
 
 ` 
 
 export const BeerList = styled.div`
   background-image: url(${bgBeer});
-  background-size: cover;
+  background-size: 100% auto;
+  background-color: #f2c624;
+  background-repeat: no-repeat;
   padding: 50px 30px;
-
+  
 `
 export const SeeMoreButton = styled.div`
   border-radius: 16px;

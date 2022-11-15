@@ -19,17 +19,17 @@ export default function BeerList(){
   }
   const likedsListKeys = {...localStorage}
   console.log(likedsListKeys)
-  useEffect(() => {
-    fetch(link)
-      .then((response) => response.json())
-      .then((data) => {
-        setBeers(data);
-        setLoading(false);
-      })
-      .finally(() => setLoading(false))
-    }, [link]);
+  useEffect(async() => {
+    await fetch(link)
+    .then((response) => response.json())
+    .then((data) => {
+      setBeers(data);
+      setLoading(false);
+    })
+    .finally(() => setLoading(false))
+  }, [link]);
 
-    console.log(search)
+    console.log(totalCount, limit, beers)
 
 return(
   <S.BeerList>

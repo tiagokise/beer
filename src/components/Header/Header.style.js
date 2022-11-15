@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Header = styled.div`
-  width: 100vw;
+  max-width: 100vw;
   background-color: orange;
 
 `;
@@ -15,12 +15,15 @@ export const Container = styled.div`
   margin: 0 auto;
   
   form{
+    label{
+      font-weight: bold;
+    }
     input{
       font-size: 16px;
       padding: 5px;
       width: 200px;
-      height: 24px;
-      border-radius: 8px;
+      /* height: 24px; */
+      border-radius: 2px;
       border: 2px solid #555555;
 
     }
