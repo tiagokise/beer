@@ -5,9 +5,10 @@ const BeerContext = React.createContext({  });
 
 export const BeerProvider = ({children}) => {
   const [ search, setSearch ] = useState()
+  const [ page, setPage ] = useState(1)
 
   return(
-    <BeerContext.Provider value={{search, setSearch}}>
+    <BeerContext.Provider value={{search, setSearch, page, setPage}}>
       {children}
     </BeerContext.Provider>
   )

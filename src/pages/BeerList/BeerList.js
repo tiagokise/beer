@@ -6,7 +6,8 @@ import * as S from "./BeerList.style"
 
 export default function BeerList(){
   const [beers, setBeers] = useState([]);
-  const [page, setPage] = useState(1)
+  const {page, setPage, search} = useContext(BeerContext)
+  const [newPage, setNewPage] = useState(page)
   const [limit, setLimit] = useState(10)
   const [perPage, setPerPage] = useState({
     value: limit, 
@@ -18,17 +19,16 @@ export default function BeerList(){
     ]
   })
   const [loading, setLoading] = useState(true);
-  const {search} = useContext(BeerContext);
-  let link = search ? `https://api.punkapi.com/v2/beers?beer_name=${search}` : `https://api.punkapi.com/v2/beers?page=${page}&per_page=${limit}`;
+  let link = search ? `https://api.punkapi.com/v2/beers?beer_name=${search}&page=${page}&per_page=${limit}` : `https://api.punkapi.com/v2/beers?page=${page}&per_page=${limit}`;
   const totalCount = beers?.length
   // const onPerPageChange = useCallback((e) => {
   //   const newValue = e
   //   console.log(newValue)
   //   setPerPage{}
   // }, [limit, setLimit, perPage, setPerPage])
-  const onChange = useCallback((e) => setLimit(e.value), [setPerPage, limit]);
+  const onChange = useCallback((e) => {setLimit(e.value); setPage(1)}, [setPerPage, limit]);
   const nextDisabled = useMemo(() => beers?.length / limit != 1,[beers, limit])
-  console.log(nextDisabled, "beers", page, limit, beers.length / limit)
+  console.log(nextDisabled, "beers", page, limit, beers.length / limit, page, newPage, search)
   const nextPage = () => {
     setLoading(true)
     setPage(Number(page) + 1)
