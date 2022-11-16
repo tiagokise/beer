@@ -5,8 +5,7 @@ import * as S from "./BeerList.style"
 
 
 export default function BeerList(){
-  const [beers, setBeers] = useState([]);
-  const {page, setPage, search} = useContext(BeerContext)
+  const {page, setPage, search, beers, setBeers} = useContext(BeerContext)
   const [newPage, setNewPage] = useState(page)
   const [limit, setLimit] = useState(12)
   const [perPage, setPerPage] = useState({
@@ -57,8 +56,10 @@ export default function BeerList(){
 return (
   <S.BeerList>
     <S.BeerListWrapper>
-      <label>Itens por página</label>
-      <S.PerPageSelect {...perPage} value={perPage?.options?.filter(option => option.value === limit)} placeholder="Por página" onChange={onChange}/>
+      <S.BeerListOptionsWrapper>
+        <label>Itens por página</label>
+        <S.PerPageSelect {...perPage} value={perPage?.options?.filter(option => option.value === limit)} placeholder="Por página" onChange={onChange} />
+      </S.BeerListOptionsWrapper>
       <S.BeerCards >
         {beers?.map((beer) => <BeerCard beer={beer} loading={loading}/>).splice(0, limit)}
       </S.BeerCards>

@@ -17,6 +17,8 @@ export const Container = styled.div`
   form{
     label{
       font-weight: bold;
+      font-size: 14px;
+      margin-right: 8px;
     }
     input{
       font-size: 16px;

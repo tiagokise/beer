@@ -14,6 +14,15 @@ export const BeerCards = styled.div`
   margin: 0 auto;
 
 ` 
+export const BeerListOptionsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: end;
+  label{
+    font-size: 14px;
+  }
+`
 export const ButtonsWrapper = styled.div`
   display: flex;
   gap: 16px;
