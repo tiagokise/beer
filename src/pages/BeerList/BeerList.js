@@ -42,18 +42,13 @@ export default function BeerList(){
     .then((response) => response.json())
     .then((data) => {
       setBeers(data);
-    })
-      setTimeout(() => {
-        
         setLoading(false)
-      }, 2000);
+    })
+      // setTimeout(() => {
+        
+      //   setLoading(false)
+      // }, 2000);
   }, [link]);
-
-  // const options = [
-  //   { value: 10, label: '10' },
-  //   { value: 25, label: '25' },
-  //   { value: 50, label: '50' }
-  // ]
 
 return (
   <S.BeerList>
