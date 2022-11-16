@@ -8,27 +8,24 @@ export default function BeerList(){
   const [beers, setBeers] = useState([]);
   const {page, setPage, search} = useContext(BeerContext)
   const [newPage, setNewPage] = useState(page)
-  const [limit, setLimit] = useState(10)
+  const [limit, setLimit] = useState(12)
   const [perPage, setPerPage] = useState({
     value: limit, 
     label: `${limit}`, 
     options: [
-      { value: 10, label: '10' },
+      { value: 12, label: '12' },
       { value: 25, label: '25' },
       { value: 50, label: '50' }
     ]
   })
   const [loading, setLoading] = useState(true);
   let link = search ? `https://api.punkapi.com/v2/beers?beer_name=${search}&page=${page}&per_page=${limit}` : `https://api.punkapi.com/v2/beers?page=${page}&per_page=${limit}`;
-  const totalCount = beers?.length
-  // const onPerPageChange = useCallback((e) => {
-  //   const newValue = e
-  //   console.log(newValue)
-  //   setPerPage{}
-  // }, [limit, setLimit, perPage, setPerPage])
+  const totalCount = 325
+  const pagesAmount = Math.ceil((totalCount / limit).toFixed(1), 1)
+
+  
   const onChange = useCallback((e) => {setLimit(e.value); setPage(1)}, [setPerPage, limit]);
   const nextDisabled = useMemo(() => beers?.length / limit != 1,[beers, limit])
-  console.log(nextDisabled, "beers", page, limit, beers.length / limit, page, newPage, search)
   const nextPage = () => {
     setLoading(true)
     setPage(Number(page) + 1)
@@ -70,6 +67,7 @@ return (
       </S.BeerCards>
       <S.ButtonsWrapper>
         <S.SeeMoreButton onClick={page <= 1 ? null : lastPage} disabled={page <=1}>Anterior</S.SeeMoreButton>
+        <p>Página {page} / {pagesAmount}</p>
         <S.SeeMoreButton onClick={!!nextDisabled ? null : nextPage} disabled={nextDisabled}>Próxima</S.SeeMoreButton>
       </S.ButtonsWrapper>
     </S.BeerListWrapper>
