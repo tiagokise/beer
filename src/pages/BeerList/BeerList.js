@@ -20,9 +20,6 @@ export default function BeerList(){
   })
   const [loading, setLoading] = useState(true);
   let link = search ? `https://api.punkapi.com/v2/beers?beer_name=${search}&page=${page}&per_page=${limit}` : `https://api.punkapi.com/v2/beers?page=${page}&per_page=${limit}`;
-  const totalCount = 325
-  const pagesAmount = Math.ceil((totalCount / limit).toFixed(1), 1)
-
   
   const onChange = useCallback((e) => {setLimit(e.value); setPage(1)}, [setPerPage, limit]);
   const nextDisabled = useMemo(() => beers?.length / limit != 1,[beers, limit])
@@ -67,7 +64,7 @@ return (
       </S.BeerCards>
       <S.ButtonsWrapper>
         <S.SeeMoreButton onClick={page <= 1 ? null : lastPage} disabled={page <=1}>Anterior</S.SeeMoreButton>
-        <p>Página {page} / {pagesAmount}</p>
+        <p>Página {page}</p>
         <S.SeeMoreButton onClick={!!nextDisabled ? null : nextPage} disabled={nextDisabled}>Próxima</S.SeeMoreButton>
       </S.ButtonsWrapper>
     </S.BeerListWrapper>
