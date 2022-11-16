@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import bgBeer from '../../images/cerveja-sustentabilidade.jpg'
+import Select from 'react-select'
 
 export const BeerCards = styled.div`
 
@@ -22,7 +23,10 @@ export const BeerList = styled.div`
   padding: 50px 30px;
   
 `
-
+export const PerPageSelect = styled(Select)`
+  width: 150px;
+  margin: 8px 0;
+`
 export const BeerListWrapper = styled.div`
   background-color: #FFFFFF98;
   padding: 20px;
