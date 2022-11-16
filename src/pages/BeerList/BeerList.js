@@ -5,21 +5,22 @@ import * as S from "./BeerList.style"
 
 
 export default function BeerList(){
-  const {page, setPage, search, beers, setBeers} = useContext(BeerContext)
+  const {page, setPage, search, beers, setBeers, limit, setLimit} = useContext(BeerContext)
   const [newPage, setNewPage] = useState(page)
-  const [limit, setLimit] = useState(12)
   const [perPage, setPerPage] = useState({
     value: limit, 
     label: `${limit}`, 
     options: [
       { value: 12, label: '12' },
       { value: 25, label: '25' },
-      { value: 50, label: '50' }
+      { value: 50, label: '50' },
+      { value: 80, label: '80' },
     ]
   })
+  const url = useMemo(() => 'https://api.punkapi.com/v2/beers?', [])
   const [loading, setLoading] = useState(true);
-  let link = search ? `https://api.punkapi.com/v2/beers?beer_name=${search}&page=${page}&per_page=${limit}` : `https://api.punkapi.com/v2/beers?page=${page}&per_page=${limit}`;
-  
+  let link = search ? `${url}beer_name=${search}${newPage !== 1 ? `&page=${page}` : ""}&per_page=${limit}` : `${url}${page !== 1 ? `&page=${page}` : ""}&per_page=${limit}`;
+  console.log(link)
   const onChange = useCallback((e) => {setLimit(e.value); setPage(1)}, [setPerPage, limit]);
   const nextDisabled = useMemo(() => beers?.length / limit != 1,[beers, limit])
   const nextPage = () => {
@@ -53,6 +54,7 @@ export default function BeerList(){
   //   { value: 25, label: '25' },
   //   { value: 50, label: '50' }
   // ]
+
 return (
   <S.BeerList>
     <S.BeerListWrapper>
