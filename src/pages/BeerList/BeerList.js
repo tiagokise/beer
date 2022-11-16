@@ -8,7 +8,15 @@ export default function BeerList(){
   const [beers, setBeers] = useState([]);
   const [page, setPage] = useState(1)
   const [limit, setLimit] = useState(10)
-  const [perPage, setPerPage] = useState([{value: limit, label: `${limit}`}])
+  const [perPage, setPerPage] = useState({
+    value: limit, 
+    label: `${limit}`, 
+    options: [
+      { value: 10, label: '10' },
+      { value: 25, label: '25' },
+      { value: 50, label: '50' }
+    ]
+  })
   const [loading, setLoading] = useState(true);
   const {search} = useContext(BeerContext);
   let link = search ? `https://api.punkapi.com/v2/beers?beer_name=${search}` : `https://api.punkapi.com/v2/beers?page=${page}&per_page=${limit}`;
@@ -47,15 +55,16 @@ export default function BeerList(){
       }, 2000);
   }, [link]);
 
-  const options = [
-    { value: 10, label: '10' },
-    { value: 25, label: '25' },
-    { value: 50, label: '50' }
-  ]
+  // const options = [
+  //   { value: 10, label: '10' },
+  //   { value: 25, label: '25' },
+  //   { value: 50, label: '50' }
+  // ]
 return (
   <S.BeerList>
     <S.BeerListWrapper>
-      <S.PerPageSelect {...perPage} options={options} placeholder="Por página" onChange={onChange}/>
+      <label>Itens por página</label>
+      <S.PerPageSelect {...perPage} value={perPage?.options?.filter(option => option.value === limit)} placeholder="Por página" onChange={onChange}/>
       <S.BeerCards >
         {beers?.map((beer) => <BeerCard beer={beer} loading={loading}/>).splice(0, limit)}
       </S.BeerCards>
