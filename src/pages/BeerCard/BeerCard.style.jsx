@@ -1,5 +1,7 @@
 import styled, {css} from 'styled-components';
 
+
+
 export const BeerCard = styled.div`
   position: relative;
   /* width: 40%; */
@@ -16,8 +18,33 @@ export const BeerCard = styled.div`
   background-color: white;
   border-left: 10px solid orange;
   flex: 1 1 350px;
-
+  ${({loading}) => css`
+    ::after{
+      display: ${loading ? 'block' : 'none'};
+      content: "";
+      background: linear-gradient(-45deg, #FF9, #fff, #eee, #ff3);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      border-radius: 0px 15px 15px 0px;
+      z-index: 1;
+    }
+  `}
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 `;
+
 
 export const BeerImage = styled.img`
   grid-area: beerImage; 

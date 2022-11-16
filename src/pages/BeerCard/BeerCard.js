@@ -4,9 +4,8 @@ import * as S from './BeerCard.style';
 import iconLike from "../../images/like.svg";
 import iconLike2 from "../../images/liked.svg";
 
-export default function BeerCard({beer, ...props}){
+export default function BeerCard({loading, beer, ...props}){
   const [cardInfo, setCardInfo] = useState([]);
-  const [loading, setLoading] = useState(true);
   const isLiked = localStorage.getItem(beer.id)
   const [liked, setLiked] = useState(isLiked ? isLiked : false)
 
@@ -30,8 +29,8 @@ export default function BeerCard({beer, ...props}){
 
   console.log(isLiked)
   return(
-    <>
-      <S.BeerCard>
+    <div>
+      <S.BeerCard loading={loading}>
         <S.BeerImage src={beer.image_url} alt="Avatar" className="avatar" />
         <S.Descriptions>
         <S.BeerName>{beer.name}</S.BeerName>
@@ -44,6 +43,7 @@ export default function BeerCard({beer, ...props}){
         </S.Descriptions>
         <S.Like onClick={(e) => handleLikedClick(e)} liked={liked} src={liked ? iconLike2 : iconLike}/>
       </S.BeerCard>
-    </>
+    
+    </div>
   )
 }

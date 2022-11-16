@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import bgBeer from '../../images/cerveja-sustentabilidade.jpg'
 
 export const BeerCards = styled.div`
-  
+
   display: flex;
   flex-flow: wrap;
   gap: 16px;
@@ -15,20 +15,27 @@ export const BeerCards = styled.div`
 ` 
 
 export const BeerList = styled.div`
+
   background-image: url(${bgBeer});
-  background-size: 100% auto;
   background-color: #f2c624;
   background-repeat: no-repeat;
   padding: 50px 30px;
   
 `
+
+export const BeerListWrapper = styled.div`
+  background-color: #FFFFFF98;
+  padding: 20px;
+  border-radius: 12px;
+`
 export const SeeMoreButton = styled.div`
   border-radius: 16px;
-  background-color: white;
+  background-color: #f2c624;
+  cursor: pointer;
   border: 1px solid lightblue;
-  width: 100px;
+  width: 160px;
   height: 30px;
-  margin: 0 auto;
+  margin: 20px auto;
   display: flex;
   align-items: center;
   justify-content: center;
