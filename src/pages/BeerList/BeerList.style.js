@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import bgBeer from '../../images/cerveja-sustentabilidade.jpg'
 import Select from 'react-select'
 
@@ -14,7 +14,10 @@ export const BeerCards = styled.div`
   margin: 0 auto;
 
 ` 
-
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  gap: 16px;
+`
 export const BeerList = styled.div`
 
   background-image: url(${bgBeer});
@@ -33,14 +36,18 @@ export const BeerListWrapper = styled.div`
   border-radius: 12px;
 `
 export const SeeMoreButton = styled.div`
-  border-radius: 16px;
-  background-color: #f2c624;
-  cursor: pointer;
-  border: 1px solid lightblue;
-  width: 160px;
-  height: 30px;
-  margin: 20px auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${({disabled}) => `
+    border-radius: 16px;
+    background-color: ${disabled ? '#99999930' : '#f2c624'};
+    color: ${disabled ? '#555555' : '#000000'};
+    cursor: ${disabled ? 'not-allowed' : 'pointer'};
+    border: 1px solid lightblue;
+    width: 160px;
+    height: 30px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  `}
+  
 `

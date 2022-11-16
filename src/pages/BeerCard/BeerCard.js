@@ -31,7 +31,7 @@ export default function BeerCard({loading, beer, ...props}){
   return(
     <div>
       <S.BeerCard loading={loading}>
-        <S.BeerImage src={beer.image_url} alt="Avatar" className="avatar" />
+        <S.BeerImage src={beer.image_url} alt="Foto" className="avatar" />
         <S.Descriptions>
         <S.BeerName>{beer.name}</S.BeerName>
         <S.Pairing>{beer.tagline}</S.Pairing>

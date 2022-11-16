@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useCallback } from "react";
+import { useState, useEffect, useContext, useCallback, useMemo } from "react";
 import BeerContext from "../../store/beerContext";
 import BeerCard from "../BeerCard";
 import * as S from "./BeerList.style"
@@ -18,12 +18,16 @@ export default function BeerList(){
   //   console.log(newValue)
   //   setPerPage{}
   // }, [limit, setLimit, perPage, setPerPage])
-
   const onChange = useCallback((e) => setLimit(e.value), [setPerPage, limit]);
-
+  const nextDisabled = useMemo(() => beers?.length / limit != 1,[beers, limit])
+  console.log(nextDisabled, "beers", page, limit, beers.length / limit)
   const nextPage = () => {
     setLoading(true)
     setPage(Number(page) + 1)
+  } 
+  const lastPage = () => {
+    setLoading(true)
+    setPage(Number(page) - 1)
   } 
   const seeLessClick = () => {
     setLimit(10)
@@ -55,7 +59,10 @@ return (
       <S.BeerCards >
         {beers?.map((beer) => <BeerCard beer={beer} loading={loading}/>).splice(0, limit)}
       </S.BeerCards>
-      <S.SeeMoreButton onClick={nextPage}>Próxima página</S.SeeMoreButton>
+      <S.ButtonsWrapper>
+        <S.SeeMoreButton onClick={page <= 1 ? null : lastPage} disabled={page <=1}>Anterior</S.SeeMoreButton>
+        <S.SeeMoreButton onClick={!!nextDisabled ? null : nextPage} disabled={nextDisabled}>Próxima</S.SeeMoreButton>
+      </S.ButtonsWrapper>
     </S.BeerListWrapper>
     </S.BeerList>
   )
