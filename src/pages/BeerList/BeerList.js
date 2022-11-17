@@ -5,6 +5,7 @@ import * as S from "./BeerList.style"
 
 
 export default function BeerList(){
+  const [isOpen, setIsOpen] = useState(false)
   const {page, setPage, search, beers, setBeers, limit, setLimit} = useContext(BeerContext)
   const [newPage, setNewPage] = useState(page)
   const [perPage, setPerPage] = useState({
@@ -35,7 +36,7 @@ export default function BeerList(){
     setLimit(10)
   }
   const likedsListKeys = {...localStorage}
-  console.log(likedsListKeys)
+  console.log(isOpen)
   useEffect(() => {
 
     fetch(link)
@@ -51,6 +52,7 @@ export default function BeerList(){
   }, [link]);
 
 return (
+  <>
   <S.BeerList>
     <S.BeerListWrapper>
       <S.BeerListOptionsWrapper>
@@ -58,7 +60,7 @@ return (
         <S.PerPageSelect {...perPage} value={perPage?.options?.filter(option => option.value === limit)} placeholder="Por página" onChange={onChange} />
       </S.BeerListOptionsWrapper>
       <S.BeerCards >
-        {beers?.map((beer) => <BeerCard beer={beer} loading={loading}/>).splice(0, limit)}
+        {beers?.map((beer, i) => <BeerCard beer={beer} i={i} loading={loading} isOpen={isOpen} setIsOpen={setIsOpen}/>).splice(0, limit)}
       </S.BeerCards>
       <S.ButtonsWrapper>
         <S.SeeMoreButton onClick={page <= 1 ? null : lastPage} disabled={page <=1}>Anterior</S.SeeMoreButton>
@@ -67,5 +69,13 @@ return (
       </S.ButtonsWrapper>
     </S.BeerListWrapper>
     </S.BeerList>
+    {!!isOpen && <S.Modal isOpen={isOpen} setIsOpen={setIsOpen} onClick={() => setIsOpen(false)}>
+      <div>
+        <img src={isOpen?.image_url}></img>
+        <p>{isOpen?.name}</p>
+      </div>
+    </S.Modal>}
+  </>
+
   )
 }

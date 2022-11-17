@@ -4,7 +4,7 @@ import * as S from './BeerCard.style';
 import iconLike from "../../images/like.svg";
 import iconLike2 from "../../images/liked.svg";
 
-export default function BeerCard({loading, beer, ...props}){
+export default function BeerCard({loading, beer, isOpen, setIsOpen, i, ...props}){
   const [cardInfo, setCardInfo] = useState([]);
   const isLiked = localStorage.getItem(beer.id)
   const [liked, setLiked] = useState(isLiked ? isLiked : false)
@@ -27,23 +27,20 @@ export default function BeerCard({loading, beer, ...props}){
   //     .finally(() => setLoading(false))
   //   }, []);
 
-  console.log(isLiked)
+  console.log(isOpen)
   return(
-    <div>
-      <S.BeerCard loading={loading}>
-        <S.BeerImage src={beer.image_url} alt="Foto" className="avatar" />
-        <S.Descriptions>
-        <S.BeerName>{beer.name}</S.BeerName>
-        <S.Pairing>{beer.tagline}</S.Pairing>
-        <S.Description>{beer.description}</S.Description>
-        <S.Pairing><b>Harmonização de comida: </b>{beer.food_pairing}</S.Pairing>
-        <S.Highlight><b>ABV: </b>{beer.abv}</S.Highlight>
-        <S.Highlight><b>IBU: </b>{beer.ibu}</S.Highlight>
-        <S.Highlight><b>Since </b>{beer.first_brewed}</S.Highlight>
-        </S.Descriptions>
-        <S.Like onClick={(e) => handleLikedClick(e)} liked={liked} src={liked ? iconLike2 : iconLike}/>
-      </S.BeerCard>
-    
-    </div>
+    <S.BeerCard loading={loading} onClick={(e) => setIsOpen(beer)}>
+      <S.BeerImage src={beer.image_url} alt="Foto" className="avatar" />
+      <S.Descriptions>
+      <S.BeerName>{beer.name}</S.BeerName>
+      <S.Pairing>{beer.tagline}</S.Pairing>
+      <S.Description>{beer.description}</S.Description>
+      <S.Pairing><b>Harmonização de comida: </b>{beer.food_pairing}</S.Pairing>
+      <S.Highlight><b>ABV: </b>{beer.abv}</S.Highlight>
+      <S.Highlight><b>IBU: </b>{beer.ibu}</S.Highlight>
+      <S.Highlight><b>Since </b>{beer.first_brewed}</S.Highlight>
+      </S.Descriptions>
+      <S.Like onClick={(e) => handleLikedClick(e)} liked={liked} src={liked ? iconLike2 : iconLike}/>
+    </S.BeerCard>
   )
 }

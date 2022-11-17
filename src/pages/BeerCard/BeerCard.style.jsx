@@ -6,10 +6,11 @@ export const BeerCard = styled.div`
   position: relative;
   /* width: 40%; */
   max-width: 350px;
-  height: 200px;
+  /* height: 200px; */
   display: grid;
-  grid-template-areas: 'beerImage descriptions';
-  grid-template-columns: 130px 1fr;
+  grid-template-areas: 'beerImage' 'descriptions';
+  grid-template-columns: 100%;
+  grid-template-rows: 100px 1fr;
   grid-gap: 16px;
   padding: 20px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20);
@@ -43,21 +44,25 @@ export const BeerCard = styled.div`
       background-position: 0% 50%;
     }
   }
+  :hover{
+    border-left: 10px solid #003F87;
+    cursor: crosshair;
+  }
 `;
 
 
 export const BeerImage = styled.img`
   grid-area: beerImage; 
-  width: auto;
-  height: inherit;
-  object-fit: inherit;
-  margin: 0 auto;
+  /* width: 100%; */
+  height: 100px;
+  /* object-fit: inherit; */
+  margin: auto;
 `
 export const BeerName = styled.div`
   font-weight: bold;
   position: relative;
 
-  ::before{
+  /* ::before{
     content: "<";
     position: absolute;
     left: -30px;
@@ -65,7 +70,7 @@ export const BeerName = styled.div`
     font-size: 30px;
     line-height: 1;
     color: orange;
-  }
+  } */
 `
 export const Descriptions = styled.div`
   grid-area: descriptions;

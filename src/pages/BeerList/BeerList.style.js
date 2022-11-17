@@ -9,7 +9,7 @@ export const BeerCards = styled.div`
   gap: 16px;
   justify-content: center;
   flex-shrink: 2;
-  background-color: white;
+  /* background-color: white; */
   /* width: 80%; */
   margin: 0 auto;
 
@@ -59,4 +59,29 @@ export const SeeMoreButton = styled.div`
     justify-content: center;
   `}
   
+`
+
+export const Modal = styled.div`
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000099;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  >div{
+    padding: 20px;
+    border-radius: 12px;
+    background: white;
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    >img{
+      height: 100px;
+    }
+  }
 `
