@@ -6,8 +6,10 @@ import iconLike2 from "../../images/liked.svg";
 
 export default function BeerCard({loading, beer, isOpen, setIsOpen, i, ...props}){
   const [cardInfo, setCardInfo] = useState([]);
-  const isLiked = localStorage.getItem(beer.id)
-  const [liked, setLiked] = useState(isLiked ? isLiked : false)
+  // const isLiked = localStorage.getItem(beer.id)
+  const likedsListKeys = {...localStorage}
+  let isLiked = Object.keys(likedsListKeys).some((liked) => liked == beer.id)
+  const [liked, setLiked] = useState(isLiked === true ? isLiked : false)
 
   const handleLikedClick = useCallback((e) => {
     e.stopPropagation() 
@@ -27,10 +29,10 @@ export default function BeerCard({loading, beer, isOpen, setIsOpen, i, ...props}
   //     })
   //     .finally(() => setLoading(false))
   //   }, []);
-
+  console.log(beer, isLiked)
   return(
     <S.BeerCard loading={loading} onClick={(e) => {e.stopPropagation() ;setIsOpen(beer)}}>
-      <S.Like onClick={(e) => handleLikedClick(e)} liked={liked} src={liked ? iconLike2 : iconLike}/>
+      <S.Like onClick={(e) => handleLikedClick(e)} liked={isLiked} src={isLiked ? iconLike2 : iconLike}/>
       <S.BeerImage src={beer.image_url} alt="Foto" className="avatar" />
       <S.Descriptions>
       <S.BeerName>{beer.name}</S.BeerName>

@@ -37,7 +37,7 @@ export default function BeerList(){
     setLimit(10)
   }
   const likedsListKeys = {...localStorage}
-  console.log(isOpen)
+  console.log(likedsListKeys)
   useEffect(() => {
 
     fetch(link)
