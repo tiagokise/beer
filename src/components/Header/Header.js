@@ -11,7 +11,7 @@ export default function Header(){
       <S.HeaderTitle>Beer's</S.HeaderTitle>
       <form>
         <label>Busca </label>
-        <input type="search" onChange={({target: {value}}) => {setSearch(value)}} />
+        <input type="search" onChange={({target: {value}}) => {setSearch(value); setPage(1)}} />
       </form>
      </S.Container>
    </S.Header>

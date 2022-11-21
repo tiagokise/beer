@@ -21,7 +21,7 @@ export default function BeerList(){
   })
   const url = useMemo(() => 'https://api.punkapi.com/v2/beers?', [])
   const [loading, setLoading] = useState(true);
-  let link = search ? `${url}beer_name=${search}${newPage !== 1 ? `&page=${page}` : ""}&per_page=${limit}` : `${url}${page !== 1 ? `&page=${page}` : ""}&per_page=${limit}`;
+  let link = search ? `${url}beer_name=${search}${page !== 1 ? `&page=${page}` : ""}&per_page=${limit}` : `${url}${page !== 1 ? `&page=${page}` : ""}&per_page=${limit}`;
   console.log(link)
   const onChange = useCallback((e) => {setLimit(e.value); setPage(1)}, [setPerPage, limit]);
   const nextDisabled = useMemo(() => beers?.length / limit != 1,[beers, limit])
@@ -36,8 +36,7 @@ export default function BeerList(){
   const seeLessClick = () => {
     setLimit(10)
   }
-  const likedsListKeys = {...localStorage}
-  console.log(likedsListKeys)
+
   useEffect(() => {
 
     fetch(link)
