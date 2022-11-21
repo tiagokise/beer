@@ -24,9 +24,17 @@ export const Modal = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
     >img{
-      max-width: 50%;
-      max-height: 40%;
+      max-width: 150px;
+        max-height: 150px;
+    }
+    @media (min-width: 786px){
+      flex-direction: row;
+      >img{
+        max-width: 150px;
+        max-height: 150px;
+      }
     }
   }
 `
