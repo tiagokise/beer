@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext, useCallback, useMemo } from "react";
+import BeerModal from "../../components/BeerModal";
 import BeerContext from "../../store/beerContext";
 import BeerCard from "../BeerCard";
 import * as S from "./BeerList.style"
@@ -69,12 +70,7 @@ return (
       </S.ButtonsWrapper>
     </S.BeerListWrapper>
     </S.BeerList>
-    {!!isOpen && <S.Modal isOpen={isOpen} setIsOpen={setIsOpen} onClick={() => setIsOpen(false)}>
-      <div>
-        <img src={isOpen?.image_url}></img>
-        <p>{isOpen?.name}</p>
-      </div>
-    </S.Modal>}
+    {!!isOpen && <BeerModal isOpen={isOpen} setIsOpen={setIsOpen}/> }
   </>
 
   )

@@ -4,9 +4,7 @@ import styled, {css} from 'styled-components';
 
 export const BeerCard = styled.div`
   position: relative;
-  /* width: 40%; */
-  max-width: 350px;
-  /* height: 200px; */
+  max-width: 150px;
   display: grid;
   grid-template-areas: 'beerImage' 'descriptions';
   grid-template-columns: 100%;
@@ -15,10 +13,11 @@ export const BeerCard = styled.div`
   padding: 20px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20);
   margin-bottom: 24px;
-  border-radius: 0px 15px 15px 0px;
+  border-radius: 15px;
   background-color: white;
   border-left: 10px solid orange;
   flex: 1 1 350px;
+  cursor: pointer;
   ${({loading}) => css`
     ::after{
       display: ${loading ? 'block' : 'none'};
@@ -46,7 +45,9 @@ export const BeerCard = styled.div`
   }
   :hover{
     border-left: 10px solid #003F87;
-    cursor: crosshair;
+  }
+  :active {
+    border-left: 10px solid red;
   }
 `;
 
@@ -61,6 +62,14 @@ export const BeerImage = styled.img`
 export const BeerName = styled.div`
   font-weight: bold;
   position: relative;
+  font-size: 16px;
+  margin-bottom: 8px;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical; 
+  line-height: 1.3;
 
   /* ::before{
     content: "<";
@@ -105,7 +114,8 @@ export const Like = styled.img`
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  top: 20px;
+  left: 20px;
   cursor: pointer;
+  z-index:2;
 `
