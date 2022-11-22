@@ -29,20 +29,13 @@ export const Modal = styled.div`
     width: 70%;
     max-height: 85%;
     overflow: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    >img{
-      max-width: 150px;
-        max-height: 150px;
-    }
-    @media (min-width: 786px){
-      flex-direction: row;
-      >img{
-        max-width: 150px;
-        max-height: 150px;
-      }
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+   
+    
+    p{
+      margin: 0px;
+      line-height: 1.6;
     }
   }
 `
