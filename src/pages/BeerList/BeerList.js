@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext, useCallback, useMemo } from "react";
 import BeerModal from "../../components/BeerModal";
+import FavoriteList from "../../components/FavoriteList/FavoriteList";
 import BeerContext from "../../store/beerContext";
 import BeerCard from "../BeerCard";
 import * as S from "./BeerList.style"
