@@ -61,15 +61,18 @@ export default function FavoriteList({isOpen, setIsOpen}){
 
   return(
     <S.Modal isOpen={!!isOpen} setIsOpen={setIsOpen} onClick={() => setIsOpen(false)}>
-      <S.FavoriteList >
-        {!!listed?.length && listed.map((item) => 
+      <S.ModalWrapper>
+        <S.FavoritesTitle>Favoritos</S.FavoritesTitle>
+        <S.FavoriteList >
+          {!!listed?.length && listed.map((item) => 
 
-          <S.FavoriteListCard>
-            <S.FavoriteImage src={item?.image_url}></S.FavoriteImage>
-            <p>{item.name}</p>
-          </S.FavoriteListCard>
-        )}
-      </S.FavoriteList>
+            <S.FavoriteListCard>
+              <S.FavoriteImage src={item?.image_url}></S.FavoriteImage>
+              <p>{item.name}</p>
+            </S.FavoriteListCard>
+          )}
+        </S.FavoriteList>
+      </S.ModalWrapper>
     </S.Modal>
   )
 }

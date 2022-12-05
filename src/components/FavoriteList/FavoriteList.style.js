@@ -7,27 +7,36 @@ export const FavoriteList = styled.div`
   min-width: 100vw;
   min-height: 100vh;
   z-index: 100; */
+  width: 100%;
+  display: flex;
+  gap: 12px;
   flex-direction: row;
   flex-flow: wrap;
-  max-height: 80%;
+  align-items: center;
   background-color: transparent;
- /* width */
- ::-webkit-scrollbar {
-  width: 20px;
-}
+  overflow-y: scroll;
 
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px white;
-  border-radius: 10px;
-}
+  ::-webkit-scrollbar {
+    width: 20px;
+  }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: orange;
-  border-radius: 10px;
-}
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px white;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: orange;
+    border-radius: 10px;
+  }
 `;
+export const ModalWrapper = styled.div`
+display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 80vw;
+  height: 80vh;
+`
 export const FavoriteListCard = styled.div`
   padding: 8px;
   background-color: #FFFFFF;
@@ -35,7 +44,7 @@ export const FavoriteListCard = styled.div`
   border-radius: 8px;
   box-shadow: 1px 1px .5px #44444460;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   width: 100px;
   height: 180px;
@@ -44,6 +53,31 @@ export const FavoriteListCard = styled.div`
 
   :hover{
     border: 1px solid red;
+  }
+`
+export const FavoritesTitle = styled.h1`
+  position: relative;
+  color: #FFFFFF;
+  @media (min-width: 1024px){
+    font-size: 52px; 
+  }
+  ::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: orange;
+    right: 110%;
+    top: 50%;
+  }
+  ::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: orange;
+    left: 110%;
+    top: 50%;
   }
 `
 export const FavoriteImage = styled.img`
@@ -62,22 +96,6 @@ export const Modal = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  >div{
-    padding: 20px;
-    margin: 20px;
-    position: relative;
-    border-radius: 12px;
-    /* background: white; */
-    width: 70%;
-
-    /* max-height: 85%; */
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-   
-  }
+  
  
 `

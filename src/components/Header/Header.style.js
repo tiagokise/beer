@@ -1,4 +1,6 @@
 import styled, {css} from 'styled-components';
+import iconLike from "../../images/like.svg";
+import iconLike2 from "../../images/liked.svg";
 
 export const Header = styled.div`
   max-width: 100vw;
@@ -33,7 +35,8 @@ export const Container = styled.div`
 
 `
 export const HeaderTitle = styled.h1`
-  font-size: 2.5em;
+  font-size: 3em;
+  color: #003F87;
 `
 export const HeaderWrapper = styled.div`
   display: flex;
@@ -44,7 +47,21 @@ export const HeaderWrapper = styled.div`
   flex-wrap: wrap;
   gap: 20px;
 `
-export const FavoriteButton = styled.button`
+
+export const Like = styled.img`
+  background-image: url(${iconLike});
+  width: 34px;
+  height: 34px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  z-index:2;
+  :hover{
+  background-image: url(${iconLike2});
+
+  }
+`
+export const FavoriteButton = styled.span`
   ${({disabled}) => css`
     border-radius: 16px;
     background-color: ${disabled ? '#99999930' : '#FFFFFF'};

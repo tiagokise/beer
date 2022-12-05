@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import BeerContext from '../../store/beerContext';
 import FavoriteList from '../FavoriteList/FavoriteList';
 import * as S from './Header.style';
+import iconLike from "../../images/like.svg";
 
 export default function Header(){
   const { setSearch, setPage } = useContext(BeerContext)
@@ -10,13 +11,15 @@ export default function Header(){
   return(
    <S.Header>
      <S.Container>
-      <S.HeaderTitle>Beer's</S.HeaderTitle>
+      <S.HeaderTitle>Beer</S.HeaderTitle>
       <S.HeaderWrapper>
         <form>
           <label>Busca </label>
           <input type="search" onChange={({target: {value}}) => {setSearch(value); setPage(1)}} />
         </form>
-        <S.FavoriteButton onClick={()=> setIsOpen(!isOpen)}>Favoritos</S.FavoriteButton>
+        <S.Like onClick={()=> setIsOpen(!isOpen)} src={iconLike}/>
+
+        {/* <S.FavoriteButton onClick={()=> setIsOpen(!isOpen)}>Favoritos</S.FavoriteButton> */}
       </S.HeaderWrapper>
      </S.Container>
     { !!isOpen && <FavoriteList isOpen={!!isOpen} setIsOpen={setIsOpen}/>}
