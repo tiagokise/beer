@@ -10,9 +10,28 @@ export const FavoriteList = styled.div`
   flex-direction: row;
   flex-flow: wrap;
   max-height: 80%;
+  background-color: transparent;
+ /* width */
+ ::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px white;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: orange;
+  border-radius: 10px;
+}
 `;
 export const FavoriteListCard = styled.div`
   padding: 8px;
+  background-color: #FFFFFF;
+
   border-radius: 8px;
   box-shadow: 1px 1px .5px #44444460;
   display: flex;
@@ -48,7 +67,7 @@ export const Modal = styled.div`
     margin: 20px;
     position: relative;
     border-radius: 12px;
-    background: white;
+    /* background: white; */
     width: 70%;
 
     /* max-height: 85%; */
@@ -60,4 +79,5 @@ export const Modal = styled.div`
     gap: 20px;
    
   }
+ 
 `
