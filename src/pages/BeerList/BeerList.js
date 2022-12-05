@@ -65,7 +65,7 @@ return (
       </S.BeerCards>
       <S.ButtonsWrapper>
         <S.SeeMoreButton onClick={page <= 1 ? null : lastPage} disabled={page <=1}>Anterior</S.SeeMoreButton>
-        <p>Página {page}</p>
+        <S.NumberPage>{page}</S.NumberPage>
         <S.SeeMoreButton onClick={!!nextDisabled ? null : nextPage} disabled={nextDisabled}>Próxima</S.SeeMoreButton>
       </S.ButtonsWrapper>
     </S.BeerListWrapper>

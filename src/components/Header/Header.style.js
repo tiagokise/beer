@@ -52,12 +52,13 @@ export const FavoriteButton = styled.button`
     cursor: ${disabled ? 'not-allowed' : 'pointer'};
     border: 2px solid ${disabled ? 'lightblue' : "#003F87"};
     width: 160px;
-    height: 30px;
+    height: 34px;
     margin: 20px auto;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    font-size: 16px;
 
     ${!disabled && css`
       :hover{

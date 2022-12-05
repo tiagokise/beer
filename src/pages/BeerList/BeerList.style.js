@@ -26,6 +26,7 @@ export const BeerListOptionsWrapper = styled.div`
 export const ButtonsWrapper = styled.div`
   display: flex;
   gap: 16px;
+  align-items: center;
 `
 export const BeerList = styled.div`
 
@@ -69,3 +70,9 @@ export const SeeMoreButton = styled.div`
 
 `
 
+export const NumberPage = styled.p`
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+
+`
