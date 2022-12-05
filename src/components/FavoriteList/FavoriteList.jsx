@@ -119,9 +119,11 @@ export default function FavoriteList({isOpen, setIsOpen}){
     <S.Modal isOpen={!!isOpen} setIsOpen={setIsOpen} onClick={() => setIsOpen(false)}>
       <S.FavoriteList >
         {!!listed?.length && listed.map((item) => 
-          <div>
+
+          <S.FavoriteListCard>
+            <S.FavoriteImage src={item?.image_url}></S.FavoriteImage>
             <p>{item.name}</p>
-          </div>
+          </S.FavoriteListCard>
         )}
       </S.FavoriteList>
     </S.Modal>

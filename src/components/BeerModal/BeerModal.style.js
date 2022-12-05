@@ -12,33 +12,22 @@ export const Modal = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  >div{
-    padding: 20px;
-    margin: 20px;
-    position: relative;
-    border-radius: 12px;
-    background: white;
-    width: 70%;
-    max-height: 85%;
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    >img{
-      max-width: 150px;
-        max-height: 150px;
-    }
-    @media (min-width: 786px){
-      flex-direction: row;
-      >img{
-        max-width: 150px;
-        max-height: 150px;
-      }
-    }
-  }
+  
 `
-
+export const ModalWrapper = styled.div`
+  padding: 20px;
+  margin: 20px;
+  position: relative;
+  border-radius: 12px;
+  background: white;
+  width: 70%;
+  max-height: 85%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+`
 export const BeerName = styled.div`
   font-weight: bold;
   position: relative;

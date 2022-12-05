@@ -4,18 +4,20 @@ import FavoriteList from '../FavoriteList/FavoriteList';
 import * as S from './Header.style';
 
 export default function Header(){
-  const { setSearch, setPage, setBeers } = useContext(BeerContext)
+  const { setSearch, setPage } = useContext(BeerContext)
   const [isOpen, setIsOpen] = useState(false)
   
   return(
    <S.Header>
      <S.Container>
       <S.HeaderTitle>Beer's</S.HeaderTitle>
-      <form>
-        <label>Busca </label>
-        <input type="search" onChange={({target: {value}}) => {setSearch(value); setPage(1)}} />
-      </form>
-      <button onClick={()=> setIsOpen(!isOpen)}>favoritos</button>
+      <S.HeaderWrapper>
+        <form>
+          <label>Busca </label>
+          <input type="search" onChange={({target: {value}}) => {setSearch(value); setPage(1)}} />
+        </form>
+        <S.FavoriteButton onClick={()=> setIsOpen(!isOpen)}>Favoritos</S.FavoriteButton>
+      </S.HeaderWrapper>
      </S.Container>
     { !!isOpen && <FavoriteList isOpen={!!isOpen} setIsOpen={setIsOpen}/>}
 

@@ -45,19 +45,27 @@ export const BeerListWrapper = styled.div`
   border-radius: 12px;
 `
 export const SeeMoreButton = styled.div`
-  ${({disabled}) => `
+  ${({disabled}) => css`
     border-radius: 16px;
-    background-color: ${disabled ? '#99999930' : '#f2c624'};
+    background-color: ${disabled ? '#99999930' : '#FFFFFF'};
     color: ${disabled ? '#555555' : '#000000'};
     cursor: ${disabled ? 'not-allowed' : 'pointer'};
-    border: 1px solid lightblue;
+    border: 2px solid ${disabled ? 'lightblue' : "#003F87"};
     width: 160px;
     height: 30px;
     margin: 20px auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
+
+    ${!disabled && css`
+      :hover{
+        background-color: #003F87;
+        color: #FFFFFF;
+      }
+    `}
   `}
-  
+
 `
 

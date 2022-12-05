@@ -7,7 +7,30 @@ export const FavoriteList = styled.div`
   min-width: 100vw;
   min-height: 100vh;
   z-index: 100; */
+  flex-direction: row;
+  flex-flow: wrap;
+  max-height: 80%;
 `;
+export const FavoriteListCard = styled.div`
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 1px 1px .5px #44444460;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  height: 180px;
+  text-align: center; 
+  border: 1px solid orange;
+
+  :hover{
+    border: 1px solid red;
+  }
+`
+export const FavoriteImage = styled.img`
+  height: 80px;
+  object-fit: contain;
+`
 export const Modal = styled.div`
   top: 0px;
   left: 0px;
@@ -27,22 +50,14 @@ export const Modal = styled.div`
     border-radius: 12px;
     background: white;
     width: 70%;
-    max-height: 85%;
+
+    /* max-height: 85%; */
     overflow: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     gap: 20px;
-    >img{
-      max-width: 150px;
-        max-height: 150px;
-    }
-    @media (min-width: 786px){
-      flex-direction: row;
-      >img{
-        max-width: 150px;
-        max-height: 150px;
-      }
-    }
+   
   }
 `
